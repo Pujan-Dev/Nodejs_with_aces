@@ -1,0 +1,16 @@
+nodejs is just an container which gives the js the ability to connect to database and to run in backend.
+express is an framework 
+
+
+npm i express
+
+
+nodejs ko version semantic (semver)
+major.minor.package
+
+
+node --watch app.js
+
+ejs embedded js
+moustache 
+pug 
