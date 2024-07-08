@@ -14,3 +14,44 @@ node --watch app.js
 ejs embedded js
 moustache 
 pug 
+
+mongodb
+local vs atlas
+ORM/ODM
+create operation 
+file handling
+multer
+
+//mongodb id pass
+pujanneupaneop0907
+pujan123
+
+// install mongodb
+npm install mongodb
+
+mongodb+srv://pujanneupaneop0907:pujan123@cluster0.sjmc5mr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+camelCase
+
+pujanneupane -> pujanNeupane
+snake_case
+pujan_neupane
+pascalcase
+PujanNeupane 
+kabab case 
+pujan-Neupane
+
+
+
+CJS - > Common js
+ES - >ecma script
+
+
+Network request |
+database query |
+file read |
+
+--->await
+
+restapi 
+restpull
