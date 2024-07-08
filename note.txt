@@ -29,6 +29,8 @@ pujan123
 // install mongodb
 npm install mongodb
 
+github
+
 mongodb+srv://pujanneupaneop0907:pujan123@cluster0.sjmc5mr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 camelCase
