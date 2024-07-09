@@ -65,3 +65,11 @@ middleware:()-> file handling-> multer -> npm i multer
     it will watch whether the user has joined or not or will going to see everything that a user does 
     it blocks if too many request is send
     it will checks the user role and its permissions 
+
+// call back accept garxa then higher order function hunxa
+
+
+forEach
+map 
+reduce ->maths calculation
+filter -> to remove somedata
