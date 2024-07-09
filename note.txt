@@ -26,6 +26,8 @@ multer
 pujanneupaneop0907
 pujan123
 
+mongodb+srv://pujanneupaneop0907:pujan123@cluster0.sjmc5mr.mongodb.net/
+
 // install mongodb
 npm install mongodb
 
@@ -57,3 +59,9 @@ file read |
 
 restapi 
 restpull
+
+
+middleware:()-> file handling-> multer -> npm i multer
+    it will watch whether the user has joined or not or will going to see everything that a user does 
+    it blocks if too many request is send
+    it will checks the user role and its permissions 
