@@ -73,3 +73,6 @@ forEach
 map 
 reduce ->maths calculation
 filter -> to remove somedata
+
+
+
