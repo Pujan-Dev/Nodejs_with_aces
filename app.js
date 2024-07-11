@@ -4,7 +4,7 @@ const Blog = require("./model/blogModel");
 const app = express()
 
 const { multer, storage } = require('./middleware/multerConfig')
-const uplaod = multer({ storage: storage })
+const upload = multer({ storage: storage })
 
 connectToDb();
 
@@ -54,7 +54,7 @@ app.get("/update/:id", async (req, res) => {
     const blog = await Blog.findById(id)
     res.render("blog/updateblog.ejs", { blog })
 })
-app.post("/update/:id", uplaod.single('image'), async (req, res) => {
+app.post("/update/:id", upload.single('image'), async (req, res) => {
     const id = req.params.id;
     const fileName = req.file.filename;
     const { title, Subtitle, description } = req.body;
@@ -64,11 +64,11 @@ app.post("/update/:id", uplaod.single('image'), async (req, res) => {
         description,
         image: fileName
     });
-    res.redirect("/")
+    res.redirect("/blogs/"+id)
 
 })
 
-app.post("/createblog", uplaod.single('image'), async (req, res) => {
+app.post("/createblog", upload.single('image'), async (req, res) => {
     const fileName = req.file.filename
     console.log(fileName)
     console.log(req.body)
