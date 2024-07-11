@@ -76,3 +76,32 @@ filter -> to remove somedata
 
 
 
+//img delete garna fs module
+
+
+hasing 
+    --> once done the data cannot be reverted 
+
+encryption
+    --> Encrypted data can be decrypted 
+
+Hasing-->>>encryption
+
+
+user.find()
+[
+    {
+        username:"hello",
+        email:
+    }
+]
+
+// Token, Cookie, session
+-->npm i jsonwebtoken JWT 
+ey...
+section1.section2.section3
+header.payload.sign
+
+
+
+

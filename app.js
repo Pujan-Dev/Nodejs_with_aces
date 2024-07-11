@@ -1,10 +1,15 @@
 const express = require("express")
 const connectToDb = require("./database/databaseConnection");
 const Blog = require("./model/blogModel");
+
+const User = require("./model/userModel")
 const app = express()
 
 const { multer, storage } = require('./middleware/multerConfig')
 const upload = multer({ storage: storage })
+
+const bcrypt = require('bcryptjs')
+
 
 connectToDb();
 
@@ -64,7 +69,7 @@ app.post("/update/:id", upload.single('image'), async (req, res) => {
         description,
         image: fileName
     });
-    res.redirect("/blogs/"+id)
+    res.redirect("/blogs/" + id)
 
 })
 
@@ -81,6 +86,52 @@ app.post("/createblog", upload.single('image'), async (req, res) => {
     })
     res.send("Blog created successfully")
 })
+
+app.get("/register", (req, res) => {
+    res.render("register.ejs");
+})
+app.post("/register", async (req, res) => {
+    const { username, email, password } = req.body
+    const user = await User.find({ email })
+    if (user[0].email === email) {
+        res.send("User already exits with this email!")
+    } else {
+        await User.create({
+            username: username,
+            email: email,
+            password: bcrypt.hashSync(password, 12)
+            // password:await hash(password,12)
+        })
+        res.send("User registered");
+    }
+})
+
+
+app.get("/login", (req, res) => {
+    res.render("login.ejs");
+})
+app.post("/login", async (req, res) => {
+    const { email, password } = req.body
+    const user = await User.find({ email: email })
+    if (user.length === 0) {
+        res.send("NO mail bye bye")
+    }
+    else {
+        //check password
+        const isMatched = bcrypt.compareSync(password, user[0].password)
+        if (!isMatched) {
+            res.send("Invalid password");
+        }
+        else {
+            res.send("login in succes")
+        }
+    }
+
+})
+
+
+
+
 
 app.use(express.static("./storage"))
 
