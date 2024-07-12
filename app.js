@@ -98,7 +98,7 @@ app.get("/register", (req, res) => {
 app.post("/register", async (req, res) => {
     const { username, email, password } = req.body
     const user = await User.find({ email })
-    if (user[0].email === email) {
+    if (user.email === email) {
         res.send("User already exits with this email!")
     } else {
         await User.create({
