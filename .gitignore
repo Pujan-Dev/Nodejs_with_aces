@@ -1,3 +1,4 @@
 .env
 note.txt
-./storage
+storage
+node_modules
