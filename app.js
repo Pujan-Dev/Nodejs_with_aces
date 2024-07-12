@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.get("/", isAunthenticated,async (req, res) => {
+app.get("/",async (req, res) => {
     // res.send("<h1>This is the ok</h1>")
     const blogs = await Blog.find() //Always returns arrays
     if (blogs.length === 0) {
