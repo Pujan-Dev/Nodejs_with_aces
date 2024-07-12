@@ -1,14 +1,18 @@
 const express = require("express")
 const connectToDb = require("./database/databaseConnection");
 const Blog = require("./model/blogModel");
+require("dotenv").config()
+const cookieParser= require('cookie-parser')
 
 const User = require("./model/userModel")
 const app = express()
+const jwt =require("jsonwebtoken")
 
 const { multer, storage } = require('./middleware/multerConfig')
 const upload = multer({ storage: storage })
 
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const isAunthenticated = require("./middleware/isAunthenticated");
 
 
 connectToDb();
@@ -17,7 +21,8 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.get("/", async (req, res) => {
+app.use(cookieParser())
+app.get("/", isAunthenticated,async (req, res) => {
     // res.send("<h1>This is the ok</h1>")
     const blogs = await Blog.find() //Always returns arrays
     if (blogs.length === 0) {
@@ -44,7 +49,7 @@ app.get("/contact", (req, res) => {
     res.render("contact.ejs", { ACES })
 })
 
-app.get("/createblog", (req, res) => {
+app.get("/createblog",isAunthenticated,(req, res) => {
     res.render("./blog/create.ejs")
 })
 
@@ -123,7 +128,14 @@ app.post("/login", async (req, res) => {
             res.send("Invalid password");
         }
         else {
+
+            const token = jwt.sign({userID: user[0]._id},process.env.SECURITY_KEY,{
+                expiresIn: '20d'
+            })
+            // localstorage && cookies
+            res.cookie("token",token) // key=value
             res.send("login in succes")
+
         }
     }
 
@@ -134,6 +146,8 @@ app.post("/login", async (req, res) => {
 
 
 app.use(express.static("./storage"))
+app.use(express.static("./public/css"))
+
 
 app.listen(3000, () => {
     console.log("NODEJS project has started at port" + 3000)
