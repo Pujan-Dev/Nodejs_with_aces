@@ -1,22 +1,26 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-// Object create gara ko 
-const blogSchema =new Schema({
-    title:{
-        type:String
+const blogSchema = new Schema({
+    title: {
+        type: String,
+        required: true
     },
-    subtitle:{
-        type:String
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
-    description:{
-        type:String
+    subtitle: {
+        type: String
     },
-    image:{
-        type:String
+    description: {
+        type: String
+    },
+    image: {
+        type: String
     }
+}, { timestamps: true });
 
-})
-// table lai query garna BLOG la ho 
-const Blog= mongoose.model("Blog",blogSchema)
-module.exports =Blog
+const Blog = mongoose.model("Blog", blogSchema);
+module.exports = Blog;

@@ -8,104 +8,116 @@
     <style>
         /* styles.css */
 
-/* Reset some basic elements */
-body, h1, h2, p, ul {
-    margin: 0;
-    padding: 0;
-}
+        /* Reset some basic elements */
+        body, h1, h2, p, ul {
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
 
-/* Navigation bar styling */
-nav {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
-}
+        /* Navigation bar styling */
+        nav {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
 
-nav ul li {
-    margin: 0 20px;
-}
+        nav ul li {
+            margin: 0 20px;
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
 
-/* Blog container styling */
-.blog-container {
-    background: #fff;
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        /* Blog container styling */
+        .blog-container {
+            background: #fff;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-.blog-container h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: #333;
-}
+        .blog-container h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-.blog-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: #666;
-}
+        .blog-container h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #666;
+        }
 
-.blog-image img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-}
+        .blog-image img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
 
-.blog-body p {
-    font-size: 1em;
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
+        .blog-body p {
+            font-size: 1em;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
 
+        button a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            background: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button a:hover {
+            background: #0056b3;
+        }
+
+        button {
+            border: none;
+            margin: 5px;
+        }
     </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
+    <%- include('../components/navbar') %>
     
     <div class="blog-container">
-        <h1><%-blog.title%></h1>
-        <h2><%-blog.subtitle%></h2>
+        <h1><%- blog.title %></h1>
+        <h2><%- blog.subtitle %></h2>
+        <h2>author: <%- blog.author.username %></h2> <!-- username-->
+
         <div class="blog-image">
-            <img src="/<%-blog.image%>" alt="Blog Image">
+            <img src="/<%- blog.image %>" alt="Blog Image">
         </div>
         <div class="blog-body">
-            <p><%-blog.description%></p>
-            <!-- <p>This is the content of my blog post. Here you can write about your experiences, share your knowledge, or tell your story. This section can be as long or as short as you need it to be.</p> -->
+            <p><%- blog.description %></p>
         </div>
-        <button><a href="/deleteblog/<%-blog._id%>">Delete Me</a></button>
-        <button><a href="/update/<%-blog._id%>">UPDATE Me</a></button>
-
+        <button><a href="/deleteblog/<%- blog._id %>">Delete Me</a></button>
+        <button><a href="/update/<%- blog._id %>">UPDATE Me</a></button>
     </div>
 </body>
 </html>
