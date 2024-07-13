@@ -87,13 +87,8 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/createblog">Create Blog</a></li>
-        </ul>
-    </nav>
+    <link rel="stylesheet" href="/css/style.css">
+    <%- include('../components/navbar') %>
     <div class="container">
         <h1>Create a New Blog Post</h1>
         <form id="blogForm" action="/createblog" method="POST" enctype="multipart/form-data">

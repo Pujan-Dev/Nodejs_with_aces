@@ -87,14 +87,8 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/createblog">Create Blog</a></li>
-            <li><a href="/register">Register</a></li>
-        </ul>
-    </nav>
+    <link rel="stylesheet" href="/css/style.css">
+    <%- include('components/navbar') %>
     <div class="container">
         <h1>login</h1>
         <form id="registerForm" action="/login" method="POST">

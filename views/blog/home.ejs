@@ -87,24 +87,9 @@
 <body>
 
     <!-- Search Bar inside the Navbar -->
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <div class="search-container">
-            <form action="/search" method="GET">
-                <input type="text" placeholder="Search.." name="query">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-        <form action="/logout">
-            <button type="submit" >
+    <link rel="stylesheet" href="/css/style.css">
+    <%- include('../components/navbar') %>
 
-                Logout
-            </button>
-        </form>
-
-    </div>
 
     <div style="display: flex;">
         <!-- Cards Section -->
