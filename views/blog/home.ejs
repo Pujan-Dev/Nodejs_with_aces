@@ -32,6 +32,32 @@
             color: black;
         }
 
+        .navbar .search-container {
+            float: right;
+        }
+
+        .navbar input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        .navbar .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navbar .search-container button:hover {
+            background: #ccc;
+        }
+
         .card {
             width: 300px;
             border: 1px solid #ccc;
@@ -59,23 +85,37 @@
 </head>
 
 <body>
-<%-include("../components/navbar.ejs")%>
 
-   <div style="display: flex;">
-     <!-- Cards Section -->
-    <% blogs.forEach((blog)=>{ %>
-      <div class="card" >
-        <img src="<%-blog.image %>" alt="Card Image">
-            <div class="title"> <%-blog.title%></div>
-        <a href="/blogs/<%-blog._id%>" >See more</a>
+    <!-- Search Bar inside the Navbar -->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <div class="search-container">
+            <form action="/search" method="GET">
+                <input type="text" placeholder="Search.." name="query">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <form action="/logout">
+            <button type="submit" >
+
+                Logout
+            </button>
+        </form>
+
     </div>
 
-    <%})%>
-
-   </div>
-
-  
-
+    <div style="display: flex;">
+        <!-- Cards Section -->
+        <% blogs.forEach((blog) => { %>
+            <div class="card">
+                <img src="<%- blog.image %>" alt="Card Image">
+                <div class="title"><%- blog.title %></div>
+                <a href="/blogs/<%- blog._id %>">See more</a>
+            </div>
+        <% }) %>
+    </div>
 </body>
 
 </html>

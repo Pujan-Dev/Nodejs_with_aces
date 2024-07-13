@@ -103,8 +103,8 @@ section1.section2.section3
 header.payload.sign
 
 HW :)
-iMPLEMENT SEARCH FEATURE ON HOME package
-implement logout feature ---> clearcookie()
+iMPLEMENT SEARCH FEATURE ON HOME package ok done
+implement logout feature ---> clearcookie() ok done
 Relationship in mongodb
 blog posted by ma author ko name aaunu paryo
 
